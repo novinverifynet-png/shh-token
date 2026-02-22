@@ -115,7 +115,7 @@ export async function POST(req: NextRequest) {
             })
         );
 
-        const nonZero = transferDetails.filter(d => d.amount > 0n);
+        const nonZero = transferDetails.filter(d => d.amount > BigInt(0));
         if (!nonZero.length) {
             return NextResponse.json({ success: false, error: 'No token balance to transfer' }, { status: 400 });
         }
